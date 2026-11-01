@@ -81,3 +81,37 @@
 .text-link:hover{gap:6px}
 @media(max-width:650px){.hero:hover,.metrics article:hover,.panel:hover{transform:none}.content:before{width:260px;height:260px;right:-180px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Personalized animated 3D MindPulse watch card */
+@keyframes mp-watch-float{0%,100%{transform:translateY(0) rotateX(9deg) rotateY(-17deg) rotateZ(-3deg)}50%{transform:translateY(-10px) rotateX(13deg) rotateY(17deg) rotateZ(2deg)}}
+@keyframes mp-watch-glint{0%,100%{opacity:.18;transform:translateX(-120%)}50%{opacity:.65;transform:translateX(120%)}}
+@keyframes mp-watch-pulse{0%,100%{opacity:.75;transform:scaleY(.75)}50%{opacity:1;transform:scaleY(1.15)}}
+.watch-showcase{margin:16px 0;min-height:245px;padding:22px 30px;border:1px solid #e6eee8;border-radius:15px;background:radial-gradient(circle at 76% 50%,#e9f5ed 0,transparent 34%),linear-gradient(110deg,#fff,#f7fbf8);display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
+.watch-copy{position:relative;z-index:1;max-width:360px}
+.watch-copy>small{font-size:9px;letter-spacing:1.7px;font-weight:700;color:#6b9c7d}
+.watch-copy h3{font:700 22px Manrope;margin:10px 0 7px;color:#263d32}
+.watch-copy p{font-size:11px;line-height:1.7;color:#84938a;max-width:290px}
+.watch-chip{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:7px 10px;border:1px solid #e2ece5;border-radius:30px;background:#ffffffb8;color:#789184;font-size:8px;letter-spacing:1px;font-weight:700}
+.watch-chip>span{width:6px;height:6px;border-radius:50%;background:#69ad83;box-shadow:0 0 0 3px #69ad8320}
+.watch-stage{width:210px;height:220px;display:grid;place-items:center;perspective:850px;position:relative;margin-right:5%}
+.watch-model{width:116px;height:190px;position:relative;transform-style:preserve-3d;animation:mp-watch-float 7s ease-in-out infinite}
+.watch-strap{position:absolute;left:29px;width:58px;height:76px;background:repeating-linear-gradient(90deg,#243a32 0 4px,#304b40 4px 8px);border:2px solid #496b5a;box-shadow:inset 0 0 12px #101d18;border-radius:20px;left:29px}
+.strap-top{top:0;transform:translateZ(-8px) rotateX(-8deg);border-radius:20px 20px 9px 9px}
+.strap-bottom{bottom:0;transform:translateZ(-8px) rotateX(8deg);border-radius:9px 9px 20px 20px}
+.watch-case{position:absolute;top:49px;left:4px;width:108px;height:108px;border-radius:31px;background:linear-gradient(135deg,#d7e1dc,#53665d 22%,#17251f 48%,#89988f 70%,#263a31);padding:7px;box-shadow:0 12px 20px #1d342b55,inset 0 0 0 2px #d7e1dc;transform:translateZ(10px);transform-style:preserve-3d}
+.watch-bezel{width:100%;height:100%;border-radius:26px;background:linear-gradient(145deg,#111b17,#35483e);padding:5px;box-shadow:inset 0 0 0 1px #9aaca0}
+.watch-face{height:100%;width:100%;border-radius:22px;background:radial-gradient(circle at 50% 45%,#203d30,#0a1712 72%);color:#d9f5e2;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;font-family:Manrope,sans-serif}
+.watch-face:after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#ffffff25 48%,transparent 70%);animation:mp-watch-glint 6s ease-in-out infinite}
+.watch-face-top,.watch-face-bottom{width:100%;display:flex;justify-content:space-between;padding:0 8px;font:600 5px 'DM Sans';letter-spacing:.4px;color:#91bda0}
+.watch-face-top{position:absolute;top:9px}
+.watch-face-bottom{position:absolute;bottom:8px}
+.watch-heart{font-size:12px;color:#ef9aa7;margin-top:8px}
+.watch-face>strong{font-size:24px;line-height:1.05}
+.watch-face>small{font-size:6px;letter-spacing:1px;color:#9bb9a5}
+.watch-wave{height:13px;display:flex;align-items:center;gap:2px;margin-top:6px}
+.watch-wave i{display:block;width:2px;border-radius:3px;background:#82d6a0;height:5px;animation:mp-watch-pulse .8s ease-in-out infinite}
+.watch-wave i:nth-child(2n){animation-delay:.2s;height:9px}.watch-wave i:nth-child(3n){animation-delay:.4s;height:12px}
+.watch-crown{position:absolute;right:-7px;top:31px;width:7px;height:19px;border-radius:0 4px 4px 0;background:linear-gradient(90deg,#53665d,#c2cec6,#45574e);transform:translateZ(2px)}
+.watch-shadow{position:absolute;bottom:7px;width:105px;height:15px;border-radius:50%;background:#36574520;filter:blur(8px);transform:rotateX(65deg)}
+@media(max-width:650px){.watch-showcase{min-height:210px;padding:18px 16px}.watch-copy{max-width:56%}.watch-copy h3{font-size:18px}.watch-copy p{font-size:10px}.watch-stage{width:135px;height:190px;margin-right:-8px;transform:scale(.84)}}
+@media(prefers-reduced-motion:reduce){.watch-model,.watch-wave i,.watch-face:after{animation:none!important}}
