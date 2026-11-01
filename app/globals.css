@@ -125,3 +125,11 @@
 .content header .header-avatar-fallback{display:grid;place-items:center;background:#eaf4ee;color:#548c70}
 .content header .header-user strong{font:700 10px Manrope,sans-serif;color:#405248;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:650px){.content header .header-account{gap:8px}.content header .header-date{display:none}.content header .header-avatar{width:30px;height:30px}.content header .header-user{min-width:54px}.content header .header-user strong{font-size:9px;max-width:105px}}
+
+
+/* Fix: keep the uploaded profile photo as a compact circular header avatar */
+.content header .header-user{flex:0 0 auto;width:auto;min-width:76px;max-width:160px;}
+.content header img.header-avatar,
+.content header .header-avatar{display:block!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;max-width:36px!important;max-height:36px!important;aspect-ratio:1/1;flex:0 0 36px;object-fit:cover!important;object-position:center;border-radius:50%!important;overflow:hidden;}
+.content header .header-avatar-fallback{display:grid!important;place-items:center;}
+@media(max-width:650px){.content header img.header-avatar,.content header .header-avatar{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;max-width:32px!important;max-height:32px!important;flex-basis:32px;}}
