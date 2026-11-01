@@ -38,3 +38,5 @@
 .profile-fields{margin-bottom:14px}
 .form-grid input:disabled{background:#f1f4f1;color:#909b94}
 @media(max-width:650px){.sidebar nav{display:flex;overflow-x:auto;gap:5px;margin-top:18px}.sidebar nav button{width:auto;white-space:nowrap;padding:10px;font-size:11px}.sidebar>small{display:none}.side-bottom{margin-top:10px}.side-bottom button{width:auto;margin-left:auto}.form-grid{grid-template-columns:1fr}.data-row{grid-template-columns:1fr auto;gap:5px}.data-row small{grid-column:1/-1}.avatar-row{align-items:flex-start}}
+
+.journal-entry{padding:14px 0;border-bottom:1px solid #edf1ed}.journal-entry small{font-size:10px;color:#8d9a91}.journal-entry p{font-size:13px;line-height:1.7;color:#43534a;white-space:pre-wrap;margin:8px 0 0}
