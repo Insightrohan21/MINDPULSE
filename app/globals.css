@@ -115,3 +115,13 @@
 .watch-shadow{position:absolute;bottom:7px;width:105px;height:15px;border-radius:50%;background:#36574520;filter:blur(8px);transform:rotateX(65deg)}
 @media(max-width:650px){.watch-showcase{min-height:210px;padding:18px 16px}.watch-copy{max-width:56%}.watch-copy h3{font-size:18px}.watch-copy p{font-size:10px}.watch-stage{width:135px;height:190px;margin-right:-8px;transform:scale(.84)}}
 @media(prefers-reduced-motion:reduce){.watch-model,.watch-wave i,.watch-face:after{animation:none!important}}
+
+
+/* Account identity in the dashboard header */
+.content header .header-account{display:flex;align-items:center;gap:18px}
+.content header .header-date{font-size:10px;color:#87918d}
+.content header .header-user{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:76px}
+.content header .header-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #e3eee6;box-shadow:0 2px 8px rgba(39,75,55,.12)}
+.content header .header-avatar-fallback{display:grid;place-items:center;background:#eaf4ee;color:#548c70}
+.content header .header-user strong{font:700 10px Manrope,sans-serif;color:#405248;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:650px){.content header .header-account{gap:8px}.content header .header-date{display:none}.content header .header-avatar{width:30px;height:30px}.content header .header-user{min-width:54px}.content header .header-user strong{font-size:9px;max-width:105px}}
