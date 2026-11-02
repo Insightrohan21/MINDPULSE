@@ -365,3 +365,69 @@ body{color:var(--mp-ink);-webkit-font-smoothing:antialiased;text-rendering:optim
  .content header img.header-avatar,.content header .header-avatar{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;max-width:46px!important;max-height:46px!important;flex-basis:46px!important}
  .content header .header-user strong{font-size:10px;max-width:112px}
 }
+
+
+/* Refined account row: keep avatar, name and date neatly inside the header */
+.content header{
+  box-sizing:border-box;
+  min-height:72px;
+  height:72px;
+  gap:12px;
+  min-width:0;
+}
+.content header > span:first-child{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.content header .header-account{
+  flex:0 1 auto;
+  min-width:0;
+  max-width:100%;
+  gap:14px;
+  height:100%;
+  align-items:center;
+}
+.content header .header-date{
+  font-size:11px;
+  white-space:nowrap;
+}
+.content header .header-user{
+  flex:0 1 auto;
+  width:auto;
+  min-width:0;
+  max-width:150px;
+  gap:2px;
+  padding:4px 8px;
+  box-sizing:border-box;
+  align-items:center;
+}
+.content header img.header-avatar,
+.content header .header-avatar{
+  width:40px!important;
+  height:40px!important;
+  min-width:40px!important;
+  min-height:40px!important;
+  max-width:40px!important;
+  max-height:40px!important;
+  flex:0 0 40px!important;
+  border-width:2px!important;
+}
+.content header .header-user strong{
+  max-width:134px;
+  font-size:10px;
+  line-height:1.15;
+}
+@media(max-width:650px){
+  .content header{height:64px;min-height:64px;padding:0 12px;gap:8px}
+  .content header .header-account{gap:8px;max-width:55%}
+  .content header .header-date{display:none}
+  .content header .header-user{max-width:100%;padding:2px 4px}
+  .content header img.header-avatar,
+  .content header .header-avatar{
+    width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;
+    max-width:36px!important;max-height:36px!important;flex-basis:36px!important;
+  }
+  .content header .header-user strong{font-size:9px;max-width:100px}
+}
