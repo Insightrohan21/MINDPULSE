@@ -133,3 +133,24 @@
 .content header .header-avatar{display:block!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;max-width:36px!important;max-height:36px!important;aspect-ratio:1/1;flex:0 0 36px;object-fit:cover!important;object-position:center;border-radius:50%!important;overflow:hidden;}
 .content header .header-avatar-fallback{display:grid!important;place-items:center;}
 @media(max-width:650px){.content header img.header-avatar,.content header .header-avatar{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;max-width:32px!important;max-height:32px!important;flex-basis:32px;}}
+
+
+/* Floating Gemini assistant */
+.gemini-widget{position:fixed;right:24px;bottom:24px;z-index:1000;font-family:'DM Sans',sans-serif}
+.gemini-launcher{display:flex;align-items:center;gap:9px;border:0;border-radius:999px;padding:14px 19px;background:#244b3c;color:#fff;box-shadow:0 10px 30px rgba(25,65,46,.24);font-size:12px;font-weight:700;cursor:pointer}
+.gemini-launcher:hover{background:#315d49;transform:translateY(-2px)}
+.gemini-panel{position:absolute;right:0;bottom:66px;width:min(370px,calc(100vw - 32px));height:min(540px,calc(100dvh - 120px));display:flex;flex-direction:column;background:#fff;border:1px solid #e1ebe4;border-radius:18px;box-shadow:0 20px 65px rgba(25,55,40,.2);overflow:hidden}
+.gemini-head{height:66px;flex:0 0 66px;background:#244b3c;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 17px}
+.gemini-head>div{display:flex;flex-direction:column;gap:4px}.gemini-head strong{font:700 14px Manrope}.gemini-head small{font-size:10px;color:#c4ddce}
+.gemini-head button{border:0;background:transparent;color:#fff;cursor:pointer}
+.gemini-messages{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8fbf8}
+.gemini-welcome{margin:auto;text-align:center;color:#63766a;max-width:245px}.gemini-welcome>span{font-size:28px;color:#4b9477}.gemini-welcome strong{display:block;font:700 15px Manrope;color:#31483a;margin:10px 0 6px}.gemini-welcome p{font-size:11px;line-height:1.6}
+.gemini-bubble{max-width:88%;padding:10px 12px;border-radius:13px;font-size:12px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.gemini-bubble.user{align-self:flex-end;background:#e4f1e8;color:#294b37;border-bottom-right-radius:4px}
+.gemini-bubble.assistant{align-self:flex-start;background:#fff;border:1px solid #e7eee8;color:#405247;border-bottom-left-radius:4px}
+.gemini-error{margin:0;padding:7px 14px;color:#a34242;font-size:10px;background:#fff6f5}
+.gemini-compose{display:flex;gap:8px;padding:12px;border-top:1px solid #edf1ed;background:#fff}
+.gemini-compose input{flex:1;min-width:0;border:1px solid #e1e9e2;border-radius:10px;padding:11px;font:12px 'DM Sans';outline:none}.gemini-compose input:focus{border-color:#78b99a}
+.gemini-compose button{width:40px;border:0;border-radius:10px;background:#315d49;color:#fff;display:grid;place-items:center;cursor:pointer}.gemini-compose button:disabled{opacity:.45;cursor:not-allowed}
+.gemini-disclaimer{text-align:center;padding:0 8px 9px;background:#fff;color:#9aa69f;font-size:9px}
+@media(max-width:650px){.gemini-widget{right:14px;bottom:14px}.gemini-launcher{padding:13px 16px}.gemini-panel{bottom:62px;height:min(540px,calc(100dvh - 100px))}}
