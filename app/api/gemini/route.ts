@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     while (contents[0]?.role === "model") contents.shift();
     if (!contents.length) return NextResponse.json({ error: "Type a message to start the conversation." }, { status: 400 });
 
-    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent", {
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
       body: JSON.stringify({
