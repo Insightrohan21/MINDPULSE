@@ -22,14 +22,14 @@ async function callGemini(apiKey: string, model: string, contents: Array<{ role:
   let data: any;
   try {
     response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents,
-      generationConfig: { temperature: 0.7, maxOutputTokens: 600 }
-    }),
-    cache: "no-store",
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents,
+        generationConfig: { temperature: 0.7, maxOutputTokens: 600 }
+      }),
+      cache: "no-store",
       signal: AbortSignal.timeout(7000)
     });
     data = await response.json().catch(() => ({}));
@@ -92,17 +92,23 @@ export async function POST(request: NextRequest) {
     while (contents[0]?.role === "model") contents.shift();
     if (!contents.length) return NextResponse.json({ error: "Type a message to start the conversation." }, { status: 400 });
 
-    // Retry the primary model once for transient overload, then fail over to a
-    // stable lightweight model. The API key stays server-side throughout.
+    // Retry transient provider failures once. A 429 can be model-specific, so
+    // skip retrying the exhausted model and try the lighter fallback models.
     let result = await callGemini(apiKey, "gemini-3.8-flash", contents);
     if (isTemporaryProviderError(result.response.status)) {
       console.warn("Gemini primary model temporarily unavailable; retrying once.", result.response.status);
-      await sleep(450);
+      await sleep(700);
       result = await callGemini(apiKey, "gemini-3.8-flash", contents);
     }
-    if (isTemporaryProviderError(result.response.status)) {
-      console.warn("Gemini primary model still unavailable; trying fallback model.", result.response.status);
-      result = await callGemini(apiKey, "gemini-3.5-flash-lite", contents);
+
+    if (result.response.status === 429 || isTemporaryProviderError(result.response.status)) {
+      const fallbackModels = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite"];
+      for (const fallbackModel of fallbackModels) {
+        console.warn("Trying Gemini fallback model after provider limit/overload.", fallbackModel, result.response.status);
+        result = await callGemini(apiKey, fallbackModel, contents);
+        if (result.response.ok) break;
+        if (result.response.status !== 429 && !isTemporaryProviderError(result.response.status)) break;
+      }
     }
 
     if (!result.response.ok) {
@@ -118,7 +124,7 @@ export async function POST(request: NextRequest) {
           : status === 404
             ? "The configured Gemini model is unavailable. Check the model name and API access."
             : status === 429
-              ? "Gemini quota or rate limit reached. Please try again later."
+              ? "Gemini API quota is currently exhausted for the available models. Check Google AI Studio usage and rate limits, or try again after the quota resets."
               : isTemporaryProviderError(status)
                 ? "MindPulse AI is temporarily busy with the AI provider. Please retry in a few seconds."
                 : "MindPulse AI could not complete the request. Please try again.";
