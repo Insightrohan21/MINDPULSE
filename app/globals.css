@@ -436,8 +436,9 @@ body{color:var(--mp-ink);-webkit-font-smoothing:antialiased;text-rendering:optim
 /* Inline watch pairing experience */
 .watch-showcase-wrap{margin:16px 0}
 .watch-showcase-wrap .watch-showcase{margin:0}
-.watch-showcase-action{position:absolute;left:30px;bottom:18px;display:flex;align-items:center;gap:12px;z-index:2}
-.watch-showcase-action>small{font-size:9px;color:#819188}
+.watch-copy-connect{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.watch-copy-connect .watch-chip{margin-top:0}
+.watch-pair-caption{display:block;margin-top:7px;font-size:9px;color:#819188;letter-spacing:.2px}
 .watch-connect-trigger{border:0;border-radius:999px;padding:10px 16px;background:#244b3c;color:#fff;font:700 10px 'DM Sans',sans-serif;box-shadow:0 7px 18px #244b3c25;cursor:pointer;transition:.2s}
 .watch-connect-trigger:hover,.watch-connect-trigger.active{background:#376a52;transform:translateY(-1px)}
 .watch-connect-trigger span{margin-left:10px;font-size:13px}
@@ -480,4 +481,4 @@ body{color:var(--mp-ink);-webkit-font-smoothing:antialiased;text-rendering:optim
 .watch-reading-grid>span{display:flex;flex-direction:column;gap:4px;padding:10px 8px;border:1px solid #e1ebe3;border-radius:9px;background:#fff}
 .watch-reading-grid strong{font:700 14px Manrope;color:#365d44}.watch-reading-grid small{font-size:8px;color:#829187}
 .watch-security-note{margin:15px 0 0;color:#829187;font-size:9px}
-@media(max-width:650px){.watch-showcase-wrap .watch-showcase{padding-bottom:58px}.watch-showcase-action{left:16px;bottom:12px;gap:7px;flex-wrap:wrap}.watch-showcase-action>small{font-size:8px}.watch-pair-grid{grid-template-columns:1fr;gap:18px}.watch-inline-panel{padding:16px}.watch-inline-heading h3{font-size:17px}.watch-pair-orbit{width:64px;height:64px;flex-basis:64px}.watch-reading-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.watch-showcase-wrap .watch-showcase{padding-bottom:18px}.watch-copy-connect{gap:7px}.watch-copy-connect .watch-chip{font-size:7px;padding:6px 8px}.watch-connect-trigger{padding:9px 11px;font-size:9px}.watch-pair-caption{font-size:8px}.watch-pair-grid{grid-template-columns:1fr;gap:18px}.watch-inline-panel{padding:16px}.watch-inline-heading h3{font-size:17px}.watch-pair-orbit{width:64px;height:64px;flex-basis:64px}.watch-reading-grid{grid-template-columns:repeat(2,1fr)}}
