@@ -431,3 +431,53 @@ body{color:var(--mp-ink);-webkit-font-smoothing:antialiased;text-rendering:optim
   }
   .content header .header-user strong{font-size:9px;max-width:100px}
 }
+
+
+/* Inline watch pairing experience */
+.watch-showcase-wrap{margin:16px 0}
+.watch-showcase-wrap .watch-showcase{margin:0}
+.watch-showcase-action{position:absolute;left:30px;bottom:18px;display:flex;align-items:center;gap:12px;z-index:2}
+.watch-showcase-action>small{font-size:9px;color:#819188}
+.watch-connect-trigger{border:0;border-radius:999px;padding:10px 16px;background:#244b3c;color:#fff;font:700 10px 'DM Sans',sans-serif;box-shadow:0 7px 18px #244b3c25;cursor:pointer;transition:.2s}
+.watch-connect-trigger:hover,.watch-connect-trigger.active{background:#376a52;transform:translateY(-1px)}
+.watch-connect-trigger span{margin-left:10px;font-size:13px}
+.watch-inline-panel{margin-top:10px;padding:24px;border:1px solid #dfeae2;border-radius:16px;background:linear-gradient(145deg,#fbfefc,#f1f7f2);box-shadow:0 12px 35px rgba(42,83,58,.07);animation:watch-panel-in .35s ease both}
+@keyframes watch-panel-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.watch-inline-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #e3ece5;padding-bottom:16px}
+.watch-inline-heading>div:first-child>small{font-size:9px;letter-spacing:1.5px;color:#659477;font-weight:800}
+.watch-inline-heading h3{margin:6px 0;font:700 20px Manrope,sans-serif;color:#294638}
+.watch-inline-heading p{margin:0;max-width:500px;font-size:11px;line-height:1.7;color:#7d8d83}
+.watch-pair-orbit{width:82px;height:82px;flex:0 0 82px;position:relative;display:grid;place-items:center}
+.watch-pair-ring{position:absolute;inset:4px;border:1px solid #b8d9c2;border-radius:50%;box-shadow:0 0 0 7px #e4f1e7,0 0 0 8px #cfe4d4;animation:watch-orbit 8s linear infinite}
+.watch-pair-icon{font-size:28px;filter:drop-shadow(0 5px 5px #345a4230);animation:mp-watch-float 4s ease-in-out infinite}
+.watch-pair-orbit i{position:absolute;width:6px;height:6px;border-radius:50%;background:#72b78a;top:7px;left:38px}
+.watch-pair-orbit i:nth-of-type(2){top:56px;left:8px;background:#a0cbb0}.watch-pair-orbit i:nth-of-type(3){top:54px;left:66px;background:#4b9477}
+@keyframes watch-orbit{to{transform:rotate(360deg)}}
+.watch-pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-top:18px}
+.watch-pair-form,.watch-pair-status{min-width:0}
+.watch-step{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.watch-step>span{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:#e0efe4;color:#477b59;font:800 10px Manrope}
+.watch-step>div{display:flex;flex-direction:column;gap:3px}
+.watch-step strong{font:700 11px Manrope;color:#385342}
+.watch-step small{font-size:9px;color:#87958c;line-height:1.5}
+.watch-pair-form label{display:block;margin:11px 0;font-size:10px;font-weight:700;color:#53695b}
+.watch-pair-form input{display:block;box-sizing:border-box;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #dce8df;border-radius:9px;background:#fff;color:#294638;font:11px 'DM Sans';outline:none}
+.watch-pair-form input:focus{border-color:#78ad89;box-shadow:0 0 0 3px #78ad8918}
+.watch-pair-button{width:100%;margin-top:5px;padding:12px 14px;border:0;border-radius:9px;background:#2e6047;color:white;font:700 10px 'DM Sans';cursor:pointer}
+.watch-pair-button:disabled{opacity:.6;cursor:wait}.watch-pair-button span{float:right;font-size:14px}
+.watch-token-box{margin-top:13px;padding:12px;border:1px solid #d6e9db;border-radius:10px;background:#f7fcf8}
+.watch-token-box strong{font:700 10px Manrope;color:#345c42}.watch-token-box p{font-size:9px;line-height:1.5;color:#74877a}
+.watch-token-box textarea{width:100%;box-sizing:border-box;min-height:64px;padding:8px;border:1px solid #dce8df;border-radius:7px;background:#fff;color:#405247;font:10px monospace;overflow-wrap:anywhere}
+.watch-token-box button{margin-top:7px;border:1px solid #b8d6c0;border-radius:7px;padding:7px 11px;background:#fff;color:#3d704d;font-size:9px;font-weight:700;cursor:pointer}
+.watch-inline-message{font-size:10px;line-height:1.6;color:#3f7650}
+.watch-status-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:30px;background:#fff;border:1px solid #e0eae3;color:#718278;font-size:9px;font-weight:700}
+.watch-status-pill i{width:6px;height:6px;border-radius:50%;background:#d5a36a}.watch-status-pill i.online{background:#53a874;box-shadow:0 0 0 3px #53a87420}
+.watch-status-note{font-size:10px;line-height:1.6;color:#87958c}
+.watch-device-row{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px solid #e4ece6}
+.watch-device-row strong{font:700 10px Manrope;color:#405b49}.watch-device-row small{font-size:9px;color:#87958c;overflow-wrap:anywhere}
+.watch-step-latest{margin-top:17px}
+.watch-reading-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.watch-reading-grid>span{display:flex;flex-direction:column;gap:4px;padding:10px 8px;border:1px solid #e1ebe3;border-radius:9px;background:#fff}
+.watch-reading-grid strong{font:700 14px Manrope;color:#365d44}.watch-reading-grid small{font-size:8px;color:#829187}
+.watch-security-note{margin:15px 0 0;color:#829187;font-size:9px}
+@media(max-width:650px){.watch-showcase-wrap .watch-showcase{padding-bottom:58px}.watch-showcase-action{left:16px;bottom:12px;gap:7px;flex-wrap:wrap}.watch-showcase-action>small{font-size:8px}.watch-pair-grid{grid-template-columns:1fr;gap:18px}.watch-inline-panel{padding:16px}.watch-inline-heading h3{font-size:17px}.watch-pair-orbit{width:64px;height:64px;flex-basis:64px}.watch-reading-grid{grid-template-columns:repeat(2,1fr)}}
