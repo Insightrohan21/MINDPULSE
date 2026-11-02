@@ -27,7 +27,7 @@ async function callGemini(apiKey: string, model: string, contents: Array<{ role:
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
       contents,
-      generationConfig: { temperature: 0.7, maxOutputTokens: 900 }
+      generationConfig: { temperature: 0.7, maxOutputTokens: 600 }
     }),
     cache: "no-store",
       signal: AbortSignal.timeout(7000)
@@ -88,6 +88,7 @@ export async function POST(request: NextRequest) {
       if (previous?.role === role) previous.parts[0].text += "\n\n" + text;
       else contents.push({ role, parts: [{ text }] });
     }
+    while (contents.length > 12) contents.shift();
     while (contents[0]?.role === "model") contents.shift();
     if (!contents.length) return NextResponse.json({ error: "Type a message to start the conversation." }, { status: 400 });
 
