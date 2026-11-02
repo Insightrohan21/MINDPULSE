@@ -17,12 +17,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Send between 1 and 30 chat messages." }, { status: 400 });
     }
 
-    const contents = messages.map((message) => {
+    const contents: Array<{ role: "user" | "model"; parts: Array<{ text: string }> }> = [];
+    for (const message of messages) {
       if (!message || !["user", "assistant"].includes(message.role) || typeof message.content !== "string") {
         throw new Error("Invalid chat message.");
       }
-      return { role: message.role === "assistant" ? "model" : "user", parts: [{ text: message.content.slice(0, 8000) }] };
-    });
+      const text = message.content.trim().slice(0, 8000);
+      if (!text) continue;
+      const role = message.role === "assistant" ? "model" : "user";
+      const previous = contents[contents.length - 1];
+      if (previous?.role === role) previous.parts[0].text += "\n\n" + text;
+      else contents.push({ role, parts: [{ text }] });
+    }
+    while (contents[0]?.role === "model") contents.shift();
+    if (!contents.length) return NextResponse.json({ error: "Type a message to start the conversation." }, { status: 400 });
 
     const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent", {
       method: "POST",
