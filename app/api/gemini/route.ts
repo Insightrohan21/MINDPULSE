@@ -18,7 +18,10 @@ const SYSTEM_PROMPT =
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function callGemini(apiKey: string, model: string, contents: Array<{ role: "user" | "model"; parts: Array<{ text: string }> }>): Promise<GeminiResult> {
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+  let response: Response;
+  let data: any;
+  try {
+    response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
     body: JSON.stringify({
@@ -27,9 +30,15 @@ async function callGemini(apiKey: string, model: string, contents: Array<{ role:
       generationConfig: { temperature: 0.7, maxOutputTokens: 900 }
     }),
     cache: "no-store",
-    signal: AbortSignal.timeout(18000)
-  });
-  const data = await response.json().catch(() => ({}));
+      signal: AbortSignal.timeout(7000)
+    });
+    data = await response.json().catch(() => ({}));
+  } catch (error) {
+    const timedOut = error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
+    const status = timedOut ? 504 : 502;
+    data = { error: { message: timedOut ? "Gemini request timed out." : "Could not reach Gemini provider." } };
+    response = new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });
+  }
   return { response, data, model };
 }
 
