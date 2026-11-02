@@ -154,3 +154,5 @@
 .gemini-compose button{width:40px;border:0;border-radius:10px;background:#315d49;color:#fff;display:grid;place-items:center;cursor:pointer}.gemini-compose button:disabled{opacity:.45;cursor:not-allowed}
 .gemini-disclaimer{text-align:center;padding:0 8px 9px;background:#fff;color:#9aa69f;font-size:9px}
 @media(max-width:650px){.gemini-widget{right:14px;bottom:14px}.gemini-launcher{padding:13px 16px}.gemini-panel{bottom:62px;height:min(540px,calc(100dvh - 100px))}}
+
+.history-row{align-items:flex-start;gap:18px;padding:13px 2px;border-bottom:1px solid #edf1ed}.history-row>div{display:flex;flex-direction:column;gap:4px;min-width:0}.history-row>div>small{font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:#7a9283}.history-row>div>strong{font:700 13px Manrope,sans-serif;color:#31483a}.history-row>div>p{margin:0;font-size:11px;color:#718078;overflow-wrap:anywhere}.history-row>time{margin-left:auto;flex:0 0 auto;font-size:10px;color:#87918d;text-align:right}@media(max-width:650px){.history-row{gap:8px;flex-direction:column}.history-row>time{margin-left:0;text-align:left}}
