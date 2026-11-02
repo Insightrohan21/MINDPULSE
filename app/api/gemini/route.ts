@@ -6,7 +6,7 @@ type ChatMessage = { role: "user" | "assistant"; content: string };
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY?.trim();
     if (!apiKey) {
       return NextResponse.json({ error: "Gemini is not configured on the server. Add GEMINI_API_KEY in Vercel." }, { status: 503 });
     }
@@ -37,8 +37,20 @@ export async function POST(request: NextRequest) {
 
     const result = await response.json();
     if (!response.ok) {
-      console.error("Gemini API error:", response.status, result?.error?.message);
-      return NextResponse.json({ error: response.status === 429 ? "Gemini is busy or the API quota is exhausted. Please try again shortly." : "Gemini could not answer right now. Please try again." }, { status: response.status === 429 ? 429 : 502 });
+      const providerMessage = typeof result?.error?.message === "string"
+        ? result.error.message.replaceAll(apiKey, "[redacted]").slice(0, 280)
+        : "No provider details were returned.";
+      console.error("Gemini API error:", response.status, providerMessage);
+      const message = response.status === 400
+        ? "Gemini rejected the request: " + providerMessage
+        : response.status === 403
+          ? "Gemini rejected the API key or access. Check that the key is active and the Generative Language API is enabled."
+          : response.status === 404
+            ? "The configured Gemini model is unavailable. Check the model name and API access."
+            : response.status === 429
+              ? "Gemini quota or rate limit reached. Check AI Studio usage and try again shortly."
+              : "Gemini service error (" + response.status + "): " + providerMessage;
+      return NextResponse.json({ error: message, providerStatus: response.status }, { status: response.status === 429 ? 429 : 502 });
     }
 
     const text = result?.candidates?.[0]?.content?.parts?.map((part: { text?: string }) => part.text ?? "").join("").trim();
