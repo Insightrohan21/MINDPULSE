@@ -349,3 +349,19 @@ body{color:var(--mp-ink);-webkit-font-smoothing:antialiased;text-rendering:optim
   .content .wrap>.ai-insight-panel,.content .wrap>.profile-grid,
   .content .wrap>.activity-grid,.content .wrap>.heart-grid{animation:none!important}
 }
+
+
+/* Larger, clearer account identity in the dashboard corner */
+.content header .header-account{gap:22px;align-items:center}
+.content header .header-date{font-size:12px;font-weight:600;color:#687b70;white-space:nowrap}
+.content header .header-user{gap:6px;min-width:112px}
+.content header img.header-avatar,
+.content header .header-avatar{width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;max-width:56px!important;max-height:56px!important;flex-basis:56px!important;border-width:3px!important;box-shadow:0 4px 14px rgba(39,75,55,.18)}
+.content header .header-user strong{font-size:12px;max-width:180px;line-height:1.35}
+@media(max-width:650px){
+ .content header .header-account{gap:12px}
+ .content header .header-date{display:block;font-size:10px}
+ .content header .header-user{min-width:88px;gap:4px}
+ .content header img.header-avatar,.content header .header-avatar{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;max-width:46px!important;max-height:46px!important;flex-basis:46px!important}
+ .content header .header-user strong{font-size:10px;max-width:112px}
+}
