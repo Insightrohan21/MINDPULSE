@@ -158,3 +158,16 @@
 .history-row{align-items:flex-start;gap:18px;padding:13px 2px;border-bottom:1px solid #edf1ed}.history-row>div{display:flex;flex-direction:column;gap:4px;min-width:0}.history-row>div>small{font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:#7a9283}.history-row>div>strong{font:700 13px Manrope,sans-serif;color:#31483a}.history-row>div>p{margin:0;font-size:11px;color:#718078;overflow-wrap:anywhere}.history-row>time{margin-left:auto;flex:0 0 auto;font-size:10px;color:#87918d;text-align:right}@media(max-width:650px){.history-row{gap:8px;flex-direction:column}.history-row>time{margin-left:0;text-align:left}}
 
 .ai-insight-panel>p{font-size:11px;line-height:1.7;color:#728078;max-width:760px}.ai-insight-panel .primary{margin:6px 0 12px}.ai-insight-result{margin-top:12px;padding:16px;border:1px solid #e3ece5;border-radius:14px;background:#f8fbf8}.ai-score{display:flex;align-items:baseline;gap:10px}.ai-score strong{font:800 28px Manrope,sans-serif;color:#315d49}.ai-score small,.insight-label{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:#7b9183}.ai-insight-result>p{font-size:12px;line-height:1.7;color:#43564a}.ai-insight-result ul{padding-left:18px;color:#43564a;font-size:11px;line-height:1.8}.ai-note{display:block;margin-top:8px;color:#9aa69f;font-size:9px}
+
+/* Gemini chat message controls */
+.gemini-message-wrap{display:flex;flex-direction:column;max-width:100%;gap:3px}
+.gemini-message-wrap.user{align-items:flex-end}
+.gemini-message-wrap.assistant{align-items:flex-start}
+.gemini-message-actions{display:flex;gap:10px;padding:0 5px}
+.gemini-message-actions button,.gemini-edit-box button{border:0;background:transparent;color:#7b9183;font-size:9px;font-weight:700;cursor:pointer;padding:3px}
+.gemini-message-actions button:hover,.gemini-edit-box button:hover{color:#315d49}
+.gemini-edit-box{width:min(310px,88vw);padding:9px;background:#fff;border:1px solid #dfe9e1;border-radius:12px}
+.gemini-edit-box textarea{width:100%;min-height:75px;resize:vertical;border:1px solid #e1e9e2;border-radius:8px;padding:9px;font:12px/1.5 'DM Sans';color:var(--ink);outline:none}
+.gemini-edit-box>div{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}
+.gemini-edit-box button:last-child{background:#315d49;color:#fff;border-radius:7px;padding:7px 10px}
+.gemini-edit-box button:disabled{opacity:.45;cursor:not-allowed}
